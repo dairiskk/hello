@@ -1,23 +1,8 @@
-// Base types (will be replaced with Prisma generated types after migration)
-export enum Plan {
-  FREE = 'FREE',
-  PAID = 'PAID',
-  ULTIMATE = 'ULTIMATE'
-}
+// Import Prisma generated types
+import { Plan, PageStatus, EventType } from '@prisma/client'
 
-export enum PageStatus {
-  DRAFT = 'DRAFT',
-  GENERATING = 'GENERATING',
-  READY = 'READY',
-  PUBLISHED = 'PUBLISHED',
-  ARCHIVED = 'ARCHIVED'
-}
-
-export enum EventType {
-  VIEW = 'VIEW',
-  CLICK = 'CLICK',
-  CONVERSION = 'CONVERSION'
-}
+// Re-export for convenience
+export { Plan, PageStatus, EventType }
 
 // Base database types
 export interface User {
@@ -236,17 +221,17 @@ export interface SubscriptionLimits {
 }
 
 export const PLAN_LIMITS: Record<Plan, SubscriptionLimits> = {
-  FREE: {
+  [Plan.FREE]: {
     maxPublishedPages: 1,
     customDomains: 0,
     analyticsRetentionDays: 30,
   },
-  PAID: {
+  [Plan.PAID]: {
     maxPublishedPages: 20,
     customDomains: 1,
     analyticsRetentionDays: 180,
   },
-  ULTIMATE: {
+  [Plan.ULTIMATE]: {
     maxPublishedPages: 50,
     customDomains: 3,
     analyticsRetentionDays: 365,

@@ -2,7 +2,7 @@
 import { getAuthUser } from '@/lib/utils/auth'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
-import { ArrowRight, Sparkles, Zap, Target } from 'lucide-react'
+import { Sparkles } from 'lucide-react'
 
 export default async function HomePage() {
   const user = await getAuthUser()
